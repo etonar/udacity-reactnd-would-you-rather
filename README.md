@@ -11,7 +11,7 @@ This is my implementation of the Would You Rather?, it's the second project for 
 
 ![screenshot #1](screenshots/Screenshot.png)
 
-**Live Demo** [https://csb-8rwe3.netlify.app/login]
+**Live Demo** [https://csb-8rwe3.netlify.app/]
 
 ## Technologies
 
