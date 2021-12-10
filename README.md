@@ -9,7 +9,7 @@
 
 This is my implementation of the Would You Rather?, it's the second project for the Udacity's React course, part of the React Nanodegree Program. Would You Rather is a polling game that presents the user with a series of questions that can be answered one of two ways. It's built with React, Redux, React Router.
 
-![screenshot #1](screenshots/Screenshot.png)
+![screenshot #1](screenshots/Screenshot 2021-12-10 at 21-02-11 React App.png)
 
 **Live Demo** [https://csb-8rwe3.netlify.app/]
 
