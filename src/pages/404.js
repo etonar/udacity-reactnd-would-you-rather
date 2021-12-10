@@ -2,18 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Img from "../assets/404.svg";
-import Wrapper from "../components/Wrapper";
 
 const NotFound = () => {
   return (
-    <Wrapper>
-      <StyleWrapper>
-        <Link className="btn" to="/">
-          back home
-        </Link>
-        <img src={Img} alt="not found" />
-      </StyleWrapper>
-    </Wrapper>
+    <StyleWrapper>
+      <Link className="btn" to="/">
+        back home
+      </Link>
+      <img src={Img} alt="not found" />
+    </StyleWrapper>
   );
 };
 const StyleWrapper = styled.section`
