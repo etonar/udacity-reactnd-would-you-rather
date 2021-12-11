@@ -31,7 +31,7 @@ const Question = ({ userAuth, users, questions }) => {
         {!isAnswered ? (
           <QuestionOptions {...question} id={id} />
         ) : (
-          <QuestionResult {...question} />
+          <QuestionResult {...question} id={id} />
         )}
         <footer>
           <div className="info">

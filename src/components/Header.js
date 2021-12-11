@@ -1,13 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { setUserAuth } from "../actions/userAuthActionCreator";
 
-const Header = ({ profile, dispatch }) => {
-  const { id, name, avatarURL: avatar } = profile;
+const Header = ({ profile, dispatch, userAuth }) => {
+  const history = useHistory();
+  const location = useLocation();
 
   const logout = () => {
-    localStorage.setItem("user", null);
+    localStorage.setItem("lastPage", location.pathname);
+    history.push("/login");
     dispatch(setUserAuth(null));
   };
   return (
@@ -15,13 +18,19 @@ const Header = ({ profile, dispatch }) => {
       <div className="header-center">
         <h1>would you rather?</h1>
         <div className="col-2">
-          <div className="profile">
-            <img className="profile-avatar" src={avatar} alt={name} />
-            <div className="profile-name">
-              <h4>{name}</h4>
-              <p>{id}</p>
+          {userAuth && (
+            <div className="profile">
+              <img
+                className="profile-avatar"
+                src={profile.avatarURL}
+                alt={profile.name}
+              />
+              <div className="profile-name">
+                <h4>{profile.name}</h4>
+                <p>{profile.id}</p>
+              </div>
             </div>
-          </div>
+          )}
           <button className="logout-btn" onClick={logout}>
             log out
           </button>
@@ -33,6 +42,7 @@ const Header = ({ profile, dispatch }) => {
 
 const mapStateToProps = ({ userAuth, users }) => {
   return {
+    userAuth,
     profile: Object.values(users).find((user) => user.id === userAuth)
   };
 };

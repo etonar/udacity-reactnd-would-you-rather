@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { withRouter, useLocation, useHistory } from "react-router-dom";
+import {
+  withRouter,
+  useLocation,
+  useHistory,
+  Redirect
+} from "react-router-dom";
 import { connect } from "react-redux";
 
 import { setUserAuth } from "../actions/userAuthActionCreator";
@@ -9,12 +14,15 @@ const Login = ({ users, dispatch }) => {
   const [userID, setUserID] = useState("");
   const location = useLocation();
   const history = useHistory();
-  console.log(location);
-  console.log(history);
+
+  const lastPath = localStorage.getItem("lastPage");
 
   const logginUser = () => {
     dispatch(setUserAuth(userID));
 
+    if (lastPath) {
+      return history.push(lastPath);
+    }
     let prevRouterPath =
       location.state !== undefined ? location.pathname : null;
 
