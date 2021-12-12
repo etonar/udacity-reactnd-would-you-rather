@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 //Redux Stuff
 import { connect } from "react-redux";
 import { fetchData } from "../actions/shared";
@@ -22,6 +21,7 @@ const App = ({ dispatch, state }) => {
   useEffect(() => {
     fetchData(dispatch);
   }, [state]);
+
   return (
     <>
       <Router>
@@ -33,7 +33,7 @@ const App = ({ dispatch, state }) => {
           <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
           <PrivateRoute exact path="/add" component={Add} />
           <PrivateRoute exact path="/question/:id" component={Question} />
-          <Route path="*">
+          <Route exact path="*">
             <NotFound />
           </Route>
         </Switch>
