@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
-import { Route, Redirect, useHistory } from "react-router-dom";
+import React from "react";
+import { Route, Redirect, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 
 const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => {
-  const history = useHistory();
-  useEffect(() => {
-    return history.listen((location) => {
-      console.log(`You changed the page to: ${location.pathname}`);
-    });
-  }, [history]);
+  const location = useLocation();
+
+  localStorage.setItem("lastPage", location.pathname);
   return (
     <Route
       {...rest}
