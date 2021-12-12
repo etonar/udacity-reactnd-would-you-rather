@@ -44,7 +44,7 @@ const Home = ({ userAuth, users, questions, answered, unanswered }) => {
                     <p className="info-name">{name} asked</p>
                     <p className="info-time">{fromNow}</p>
                   </div>
-                  <Link to={`/question/${id}`}>
+                  <Link to={`/questions/${id}`}>
                     <button>answer</button>
                   </Link>
                 </footer>

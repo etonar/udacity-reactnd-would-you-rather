@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import styled from "styled-components";
 import moment from "moment";
 
@@ -11,15 +11,19 @@ const Question = ({ userAuth, users, questions }) => {
   const { id } = useParams();
   const isAnswered = Object.keys(users[userAuth].answers).includes(id);
 
-  const name = users[userAuth].name;
-  const avatar = users[userAuth].avatarURL;
+  // const name = users[userAuth].name;
+  // const avatar = users[userAuth].avatarURL;
 
   const question = Object.values(questions).find(
     (question) => question.id === id
   );
+
+  if (!question) {
+    return <Redirect to="/404" />;
+  }
   const fromNow = moment(question.timestamp).fromNow();
 
-  const author = users[question.author].name;
+  const { name, avatarURL: avatar } = users[question.author];
   return (
     <Wrapper>
       <QuestionWrapper>
@@ -35,7 +39,7 @@ const Question = ({ userAuth, users, questions }) => {
         )}
         <footer>
           <div className="info">
-            <p className="info-name">{author} asked</p>
+            <p className="info-name">{name} asked</p>
             <p className="info-time">{fromNow}</p>
           </div>
           {isAnswered && (

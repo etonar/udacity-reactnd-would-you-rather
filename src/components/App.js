@@ -32,7 +32,7 @@ const App = ({ dispatch, state }) => {
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path="/leaderboard" component={Leaderboard} />
           <PrivateRoute exact path="/add" component={Add} />
-          <PrivateRoute exact path="/question/:id" component={Question} />
+          <PrivateRoute exact path="/questions/:id" component={Question} />
           <Route exact path="*">
             <NotFound />
           </Route>
